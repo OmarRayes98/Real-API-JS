@@ -43,6 +43,8 @@
             if(reload)
             {
                 document.getElementById("posts").innerHTML = ""
+                toggleLoader(false)
+
             }
 
             
@@ -65,7 +67,8 @@
                     `
                         <button class='btn btn-danger' style='margin-left: 5px; float: right' onclick="deletePostBtnClicked('${encodeURIComponent(JSON.stringify(post))}')">delete</button>
 
-                        <button class='btn btn-secondary' style='float: right' onclick="editPostBtnClicked('${encodeURIComponent(JSON.stringify(post))}')">edit</button>
+                        <button class='btn btn-secondary' style='float: right;' onclick="editPostBtnClicked('${encodeURIComponent(JSON.stringify(post))}')">edit</button>
+
                     `
                 }
 
@@ -146,6 +149,9 @@
             }
         }).catch(err =>{
             console.log(err);
+            toggleLoader(false)
+            document.getElementById("posts").innerHTML = `<h3 style="color:red; text-align:center">${err.message}</h3>`
+
 
         })
         
@@ -162,15 +168,4 @@
     }
 
 
-    
-    function addBtnClicked()
-    {        
-        document.getElementById("post-modal-submit-btn").innerHTML = "Create"
-        document.getElementById("post-id-input").value = ""
-        document.getElementById("post-modal-title").innerHTML = "Create A New Post"
-        document.getElementById("post-title-input").value = ""
-        document.getElementById("post-body-input").value = ""
-        
-        let postModal = new bootstrap.Modal(document.getElementById("create-post-modal"), {})
-        postModal.toggle()
-    }
+

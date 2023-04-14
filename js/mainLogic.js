@@ -192,3 +192,16 @@ function showAlert(customMessage, type="success")
     
     
 }
+
+    
+function addBtnClicked()
+{        
+    document.getElementById("post-modal-submit-btn").innerHTML = "Create"
+    document.getElementById("post-id-input").value = ""
+    document.getElementById("post-modal-title").innerHTML = "Create A New Post"
+    document.getElementById("post-title-input").value = ""
+    document.getElementById("post-body-input").value = ""
+    
+    let postModal = new bootstrap.Modal(document.getElementById("create-post-modal"), {})
+    postModal.toggle()
+}

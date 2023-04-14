@@ -12,7 +12,8 @@ function loginBtnClicked()
     const url = `${baseUrl}/login`
     toggleLoader(true)
     axios.post(url, params)
-    .then((response) => {        
+    .then((response) => { 
+              
         localStorage.setItem("token", response.data.token)
         localStorage.setItem("user", JSON.stringify(response.data.user))
 
